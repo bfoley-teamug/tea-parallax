@@ -1,0 +1,111 @@
+@import 'https://fonts.googleapis.com/css?family=KoHo:100';
+$primary: #008b8b;
+$secondary: #4b0082;
+
+$parallax-perspective: 1 !default;
+$parallax-element: "body" !default;
+$parallax-ios: true !default;
+
+@mixin parallax-me(
+  $perspective: $parallax-perspective,
+  $element: $parallax-element,
+  $parallax-ios: $parallax-ios
+  ) {
+    @if $element == "body" {
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      /*overflow is when content is too big for element the overflow part is clipped, and the rest of the content will be invisible*/
+    }
+  }
+    #{$element} {
+    overflow: auto;
+    perspective: $perspective * 1px;
+    transform-style: preserve-3d;
+      
+    @if $parallax-ios == false {
+      -webkit-overflow-scrolling: touch;
+    }
+    &, * {
+      transform-style: preserve-3d;
+    }
+  }
+}
+  
+@mixin parallax(
+  $distance: 0,
+  $perspective: $parallax-perspective
+  
+  ) {
+   transform:
+     translateZ($distance * $perspective * 1px)
+     scale(abs($distance - 1))
+  ;
+  z-index: $distance * 1000;
+    
+}
+
+//
+
+@include parallax-me; 
+
+.container {
+  :nth-child(1) {
+    @include parallax(-.4);
+    top: 200px;
+    left: 200px;
+  }
+  :nth-child(2) {
+    @include parallax(.2);
+    top: 200px;
+    left: 500px;
+  }
+  :nth-child(3) {
+    @include parallax(.3);
+    top: 400px;
+    left: 600px;
+  }
+  :nth-child(4) {
+    @include parallax(.1);
+    top: 500px;
+    left: 500px;
+  }
+  :nth-child(5) {
+    @include parallax(-2);
+    top: 2000px;
+    left: 2000px;
+  }
+  
+  padding: 10%;
+  max-width: 40em;
+  margin: auto;
+  > * {
+    position: absolute;
+  }
+}
+
+body {
+  font-family: KoHo, sans-serif;
+  background: #EEF1F3;
+  line-height: 1;
+}
+
+
+h1, h2 {
+  font-weight: 100;
+  margin: 0;
+}
+
+h1 {
+  font-size: 5em;
+  color: $primary;
+}
+
+h2 {
+  font-size: 2.2em;
+  color: $secondary;
+  @include parallax(.25);
+}
