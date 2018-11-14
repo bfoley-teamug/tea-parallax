@@ -78,6 +78,31 @@ $parallax-ios: true !default;
     top: 2000px;
     left: 2000px;
   }
+  :nth-child(6) {
+    @include parallax(.4);
+    top: 600px;
+    left: 300px;
+  }
+  :nth-child(7) {
+    @include parallax(-1);
+    top: 400px;
+    left: 1000px;
+  }
+  :nth-child(8) {
+    @include parallax(-.4);
+    top: 100px;
+    left: 1400px;
+  }
+  :nth-child(9) {
+    @include parallax(.4);
+    top: 900px;
+    left: 500px;
+  }
+  :nth-child(10) {
+    @include parallax(-1);
+    top: 1600px;
+    left: 100px;
+  }
   
   padding: 10%;
   max-width: 40em;
