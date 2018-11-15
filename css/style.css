@@ -79,6 +79,18 @@ body, body * {
 .container :nth-child(10) {
   transform: translateZ(-1px) scale(2);
   z-index: -1000;
+  top: 600px;
+  left: 100px;
+}
+.container :nth-child(11) {
+  transform: translateZ(-1px) scale(2);
+  z-index: -1000;
+  top: 500px;
+  left: 100px;
+}
+.container :nth-child(12) {
+  transform: translateZ(-1px) scale(2);
+  z-index: -1000;
   top: 1600px;
   left: 100px;
 }
